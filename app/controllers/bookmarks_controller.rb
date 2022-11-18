@@ -1,9 +1,9 @@
 class BookmarksController < ApplicationController
   def add_user_bookmark
     b = Bookmark.new
-    b.user_id =
-      b.movie_id =
-        b.save
+    b.user_id = params["the_user_id"]
+    b.movie_id = params["the_movie_id"]
+    b.save
     redirect_to("/bookmarks", { :notice => "Bookmark created successfully." })
   end
 
