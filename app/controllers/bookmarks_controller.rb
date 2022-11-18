@@ -1,4 +1,6 @@
 class BookmarksController < ApplicationController
+
+
   def add_user_bookmark
     b = Bookmark.new
     b.user_id = params["the_user_id"]
@@ -9,7 +11,6 @@ class BookmarksController < ApplicationController
 
   def index
     #matching_bookmarks = Bookmark.where({:user_id => session[:user_id]})
-    @current_user = User.where({:id => session[:user_id]})[0]
 
     matching_bookmarks = @current_user.bookmarks
 
