@@ -19,6 +19,11 @@
       </div>
     </div>
 
+    <form action="/add_bookmark">
+    <input type="hidden" name="the_user_id" value = "<%session[:user_id]%>">
+    <input type="hidden" name="the_movie_id" value="<%@the_movie.id%>">
+    <button>Bookmark this movie!</button>
+    </form>
     <dl>
       <dt>
         Title

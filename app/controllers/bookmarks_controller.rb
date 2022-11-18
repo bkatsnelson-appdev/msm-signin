@@ -1,4 +1,12 @@
 class BookmarksController < ApplicationController
+  def add_user_bookmark
+    b = Bookmark.new
+    b.user_id =
+      b.movie_id =
+        b.save
+    redirect_to("/bookmarks", { :notice => "Bookmark created successfully." })
+  end
+
   def index
     matching_bookmarks = Bookmark.all
 
@@ -39,7 +47,7 @@ class BookmarksController < ApplicationController
 
     if the_bookmark.valid?
       the_bookmark.save
-      redirect_to("/bookmarks/#{the_bookmark.id}", { :notice => "Bookmark updated successfully."} )
+      redirect_to("/bookmarks/#{the_bookmark.id}", { :notice => "Bookmark updated successfully." })
     else
       redirect_to("/bookmarks/#{the_bookmark.id}", { :alert => the_bookmark.errors.full_messages.to_sentence })
     end
@@ -51,6 +59,6 @@ class BookmarksController < ApplicationController
 
     the_bookmark.destroy
 
-    redirect_to("/bookmarks", { :notice => "Bookmark deleted successfully."} )
+    redirect_to("/bookmarks", { :notice => "Bookmark deleted successfully." })
   end
 end
