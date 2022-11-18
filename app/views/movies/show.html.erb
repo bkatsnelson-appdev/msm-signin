@@ -19,6 +19,7 @@
       </div>
     </div>
 
+    <%if session[:user_id] != nil%>
     <% current_user_bookmarks = Bookmark.where({:movie_id => @the_movie.id, :user_id => session[:user_id]}) %>
 
     <%the_bookmark = current_user_bookmarks[0]%>
@@ -30,6 +31,7 @@
     </form>
     <%else%>
       <a href="/delete_bookmark/<%=the_bookmark.id%>">Un-bookmark</a>
+    <%end%>
     <%end%>
 
     <dl>
